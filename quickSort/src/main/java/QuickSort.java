@@ -8,40 +8,48 @@ public class QuickSort {
         System.out.println(Arrays.toString(nums));
     }
 
-    private static void sort(int[] nums) {
+    public static void sort(int[] nums){
         // check input before operation;
         if (nums == null || nums.length == 0) {
             return;
         }
+
         quickSort(nums, 0, nums.length - 1);
     }
 
-    private static void quickSort(int[] nums, int start, int end) {
+    private static void quickSort(int[] nums, int start, int end){
+        // set the recursion terminate conditions;
         if (start >= end) {
             return;
         }
-        int pivotPosition = division(nums, start, end);
+
+        //get the pivot element position;
+        int pivotPosition = partition(nums, start, end);
         quickSort(nums, start, pivotPosition - 1);
         quickSort(nums, pivotPosition + 1, end);
     }
 
-    private static int division(int[] nums, int start, int end) {
-        // select the last element as the pivot;
+    private static int partition(int[] nums, int start, int end){
         int pivot = nums[end];
         int j = start - 1;
-        for (int i = start; i < end; i++) {
+
+        // traverse the whole array;
+        for (int i = start; i < end; i ++) {
+            // move the j pointer if there the value is less or equal to the pivot;
             if (nums[i] <= pivot) {
-                j++;
-                if (j != i) {
-                    swamp(nums, j, i);
+                j ++;
+                // if i is not euqal to j which means there is element's greater than pivot;
+                if (i != j) {
+                    swap(nums, i, j);
                 }
             }
+
         }
-        swamp(nums, j + 1, end);
+        swap(nums, j + 1, end);
         return j + 1;
     }
 
-    private static void swamp(int[] nums, int j, int i) {
+    private static void swap(int[] nums, int i , int j){
         int temp = nums[i];
         nums[i] = nums[j];
         nums[j] = temp;
