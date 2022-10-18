@@ -1,10 +1,8 @@
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class MapDemo {
     public static void main(String[] args) {
+        Deque<Integer> result = new LinkedList<>();
         Map<Integer, String> map = new HashMap<>();
         map.put(1, "lynn");
         map.put(2, "simons");
@@ -16,5 +14,7 @@ public class MapDemo {
         Set<Integer> key = map.keySet();
         Collection<String> values = map.values();
         Set<Map.Entry<Integer, String>> entry = map.entrySet();
+        char[] word = new char[2];
     }
+
 }
